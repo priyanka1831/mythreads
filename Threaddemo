@@ -1,0 +1,60 @@
+package mythreads;
+//create own thread by extending java.lang.Thread class 
+class Eventhread extends Thread
+{
+	//constructor-to initialize values to the properties of class or super class
+	Eventhread()
+	{
+		setName("Even thread");
+	}
+
+public void run()
+{
+	System.out.println("Currentthread:"+Thread.currentThread().getName());
+	for (int i=2;i<=20;i+=2)
+	{
+	System.out.println(i+"\t");	
+	try {
+		Thread.currentThread().sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+   }
+}
+//create ownthread class by implementing java.lang.Runnable interface
+class Oddthread implements Runnable
+{
+	Oddthread()
+	{
+	
+	}
+
+	@Override
+	public void run() {
+		
+  System.out.println("Currentthread:"+Thread.currentThread().getName());
+	for (int i=1;i<=20;i+=2)
+	{
+		System.out.println(i+"\t");
+	}
+		
+	}
+	
+}
+public class Threaddemo {
+
+	public static void main(String[] args) {
+		Oddthread ot=new Oddthread();
+		Eventhread et= new Eventhread();
+		et.setName("Even Thread");
+		
+		ot.run();
+		et.run();
+		
+
+	}
+}
+
+
